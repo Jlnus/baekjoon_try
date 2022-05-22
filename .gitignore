@@ -1,3 +1,5 @@
 
 .vscode/
 *.exe
+
+#  find . -name "*.exe" -delete  
