@@ -18,9 +18,9 @@ int main()
 		max = lA + 1;
 	else
 		max = lA;
-	while (lA > 0 && lB > 0) // 예제 이상하게 나옴.
+	while (lA > 0 && lB > 0) // 갈아엎, 배열 다 집어넣고 10넘는거만 수정
 	{
-		num[max - 1 - i] += (A[lA - 1] - '0' + B[lB - 1] - '0') % 10;
+		num[max - 1 - i] += (A[lA - 1] - '0' + B[lB - 1] - '0');
 		if (num[max - 1 - i] > 9)
 		{
 			num[max - 2 - i] += 1;
@@ -34,12 +34,12 @@ int main()
 	if (lA > lB)
 		for (int i = 0; i < lA; i++)
 		{
-			num[lA - 1 - i] = A[lA - 1 - i] - '0';
+			num[lA - 1 - i] += A[lA - 1 - i] - '0';
 		}
 	else if (lB > lA)
 		for (int i = 0; i < lB; i++)
 		{
-			num[lB - 1 - i] = B[lB - 1 - i] - '0';
+			num[lB - 1 - i] += B[lB - 1 - i] - '0';
 		}
 	else if (A[0] - '0' + B[0] - '0' > 9)
 		num[0] = (A[0] - '0' + B[0] - '0') / 10;
