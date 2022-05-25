@@ -3,51 +3,44 @@
 
 int main()
 {
-	char A[10000], B[10000];
+	char A[10001], B[10001];
 	int num[10001] = {0};
 	int max, lA, lB, i = 0;
 
 	scanf("%s %s", A, B);
 	lA = strlen(A);
 	lB = strlen(B);
-	if (lA > lB)
-		max = lA;
-	else if (lA < lB)
-		max = lB;
-	else if (A[0] - '0' + B[0] - '0' > 9)
-		max = lA + 1;
-	else
-		max = lA;
-	while (lA > 0 && lB > 0) // 갈아엎, 배열 다 집어넣고 10넘는거만 수정
+	max = (lA > lB) ? lA : lB;
+	max += 1;
+	while (lA > 0)
 	{
-		num[max - 1 - i] += (A[lA - 1] - '0' + B[lB - 1] - '0');
-		if (num[max - 1 - i] > 9)
-		{
-			num[max - 2 - i] += 1;
-			num[max - 1 - i] %= 10;
-		}
-		lA--;
-		lB--;
+		num[max - 1 - i] = A[lA - 1] - '0';
 		i++;
+		lA--;
 	}
+	i = 0;
+	while (lB > 0)
+	{
+		num[max - 1 - i] += B[lB - 1] - '0';
+		i++;
 
-	if (lA > lB)
-		for (int i = 0; i < lA; i++)
-		{
-			num[lA - 1 - i] += A[lA - 1 - i] - '0';
-		}
-	else if (lB > lA)
-		for (int i = 0; i < lB; i++)
-		{
-			num[lB - 1 - i] += B[lB - 1 - i] - '0';
-		}
-	else if (A[0] - '0' + B[0] - '0' > 9)
-		num[0] = (A[0] - '0' + B[0] - '0') / 10;
-	else
-		num[0] = A[0] - '0' + B[0] - '0';
+		lB--;
+	}
 
 	for (int i = 0; i < max; i++)
 	{
+		if (num[max - 1 - i] > 9)
+		{
+			num[max - 1 - i] %= 10;
+			num[max - 2 - i] += 1;
+		}
+	}
+	i = 0;
+	while (num[i] == 0)
+		i++;
+	while (max > i)
+	{
 		printf("%d", num[i]);
+		i++;
 	}
 }
