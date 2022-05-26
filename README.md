@@ -17,4 +17,3 @@ alias l='ls -la --color=auto'
 
 In Progress --------------------------\
 Gold-1005
-Bronze-10757
