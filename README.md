@@ -3,7 +3,7 @@ vscode 단축키 -----------------------------
 여러 줄 수정 : ctrl + alt + 클릭(드래그) 
 변수 여러개 : ctrl + shift + L
 
-.bashrc ------------------------------
+# .bashrc ------------------------------
 PS1='%F{#f5fafa}[%F{#00f2f2}%m%F{#f5fafa}] %F{#fa96af}%~
 %b%F{#80f000}>%f '
 
@@ -15,5 +15,5 @@ alias py='winpty python.exe'
 alias l='ls -la --color=auto'
 
 
-In Progress --------------------------\
+# In Progress --------------------------\
 Gold-1005
