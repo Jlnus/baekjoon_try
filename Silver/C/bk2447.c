@@ -2,33 +2,31 @@
 
 void star(int n, int x, int y)
 {
+
 	if (x == n)
 	{
 		puts("");
 		star(n, 0, y + 1);
+		return;
 	}
-	else if (y == n)
+	if (y == n)
 	{
 		return;
 	}
-	else if ((x >= n / 3 && x <= n * 2 / 3 - 1) && (y >= n / 3 && y <= n * 2 / 3 - 1))
+	for (int i = n; i != 1; i /= 3)
 	{
-		printf(" ");
-		x++;
-		star(n, x, y);
+		if ((x % i >= i / 3 && x % i <= i * 2 / 3 - 1) &&
+			(y % i >= i / 3 && y % i <= i * 2 / 3 - 1))
+		{
+			printf(" ");
+			x++;
+			star(n, x, y);
+			return;
+		}
 	}
-	else if (x % 3 == 1 && y % 3 == 1)
-	{
-		printf(" ");
-		x++;
-		star(n, x, y);
-	}
-	else
-	{
-		printf("*");
-		x++;
-		star(n, x, y);
-	}
+	printf("*");
+	x++;
+	star(n, x, y);
 }
 
 int main()
