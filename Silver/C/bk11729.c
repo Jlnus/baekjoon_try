@@ -1,12 +1,27 @@
 #include <stdio.h>
-void print(int N)
+
+int hanoi(int N);
+
+void print(int N, int i)
 {
-	if (N == 1)
+	int sum, t;
+
+	if (N % 2 == 0)
 	{
-		print("1 3\n");
-		return;
+		sum = 1;
+		t = i / 2;
 	}
-	print(N - 1);
+	else
+	{
+		sum = 2;
+		t = i;
+	}
+	if (N == 1)
+		printf("1 3\n");
+	else if (i % 2 == 0)
+		printf("%d %d\n", t % 3 + 1, (t + sum) % 3 + 1);
+	else
+		print(N - 1, (i - 1) / 2);
 }
 
 int hanoi(int N)
@@ -23,5 +38,6 @@ int main()
 	int N;
 	scanf("%d", &N);
 	printf("%d\n", hanoi(N));
-	print(N);
+	for (int i = 0; i < hanoi(N); i++)
+		print(N, i);
 }
