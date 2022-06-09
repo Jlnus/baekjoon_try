@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-int main(c)
+int main()
 {
-	int N[8001] = {0}, tmp;
+	int c, N[8001] = {0}, tmp;
 	for (int i = scanf("%d", &c) - 1; i < c; i++)
 	{
 		scanf("%d", &tmp);
