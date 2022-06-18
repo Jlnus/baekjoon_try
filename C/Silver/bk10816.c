@@ -3,38 +3,7 @@
 
 int compare(void *first, void *second)
 {
-	if (*(int *)first > *(int *)second)
-		return 1;
-	else if (*(int *)first < *(int *)second)
-		return -1;
-	else
-		return 0;
-}
-
-int binsearch(int data[], int n, int key)
-{
-	int low, high;
-	int mid;
-
-	low = 0;
-	high = n - 1;
-	while (low <= high)
-	{
-		mid = (low + high) / 2;
-		if (key == data[mid])
-		{ //탐색 성공
-			return mid;
-		}
-		else if (key < data[mid])
-		{ //탐색 범위를 아래쪽으로
-			high = mid - 1;
-		}
-		else if (key > data[mid])
-		{ //탐색 범위를 위쪽으로
-			low = mid + 1;
-		}
-	}
-	return -1; //탐색 실패
+	return *(int *)first - *(int *)second;
 }
 
 int usearch(int data[], int n, int key)
@@ -45,20 +14,20 @@ int usearch(int data[], int n, int key)
 	while (mid < n)
 	{
 		if (key == data[mid])
-		{ //탐색 성공
+		{
 			cnt++;
 			mid++;
 		}
-		else if (key > data[mid])
-		{ //탐색 범위를 아래쪽으로
+		else if (key < data[mid])
+		{
 			return cnt;
 		}
-		else if (key < data[mid])
-		{ //탐색 범위를 아래쪽으로
+		else if (key > data[mid])
+		{
 			mid++;
 		}
 	}
-	return 0; //탐색 실패
+	return cnt;
 }
 
 int dsearch(int data[], int n, int key)
@@ -69,20 +38,20 @@ int dsearch(int data[], int n, int key)
 	while (mid >= 0)
 	{
 		if (key == data[mid])
-		{ //탐색 성공
+		{
 			cnt++;
 			mid--;
 		}
 		else if (key > data[mid])
-		{ //탐색 범위를 아래쪽으로
+		{
 			return cnt;
 		}
 		else if (key < data[mid])
-		{ //탐색 범위를 아래쪽으로
+		{
 			mid--;
 		}
 	}
-	return 0; //탐색 실패
+	return cnt;
 }
 int main()
 {
@@ -100,6 +69,7 @@ int main()
 	}
 	qsort(num, N, sizeof(int), compare);
 	int tmp;
+
 	for (int i = 0; i < M; i++)
 	{
 		tmp = 0;
