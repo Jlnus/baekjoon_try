@@ -1,58 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int compare(void *first, void *second)
+int compare(const void *first, const void *second)
 {
 	return *(int *)first - *(int *)second;
 }
 
-int usearch(int data[], int n, int key)
+int lower_bound(int arr[], int target, int size)
 {
+	int mid, start, end;
+	start = 0, end = size;
 
-	int mid = n / 2;
-	int cnt = 0;
-	while (mid < n)
+	while (end > start)
 	{
-		if (key == data[mid])
-		{
-			cnt++;
-			mid++;
-		}
-		else if (key < data[mid])
-		{
-			return cnt;
-		}
-		else if (key > data[mid])
-		{
-			mid++;
-		}
+		mid = (start + end) / 2;
+		if (arr[mid] >= target)
+			end = mid;
+		else
+			start = mid + 1;
 	}
-	return cnt;
+	return end;
 }
 
-int dsearch(int data[], int n, int key)
+int upper_bound(int arr[], int target, int size)
 {
+	int mid, start, end;
+	start = 0, end = size;
 
-	int mid = n / 2 - 1;
-	int cnt = 0;
-	while (mid >= 0)
+	while (end > start)
 	{
-		if (key == data[mid])
-		{
-			cnt++;
-			mid--;
-		}
-		else if (key > data[mid])
-		{
-			return cnt;
-		}
-		else if (key < data[mid])
-		{
-			mid--;
-		}
+		mid = (start + end) / 2;
+		if (arr[mid] > target)
+			end = mid;
+		else
+			start = mid + 1;
 	}
-	return cnt;
+	return end;
 }
+
 int main()
 {
 	int N, M;
@@ -61,26 +46,10 @@ int main()
 	for (int i = 0; i < N; i++)
 		scanf("%d", &num[i]);
 	scanf("%d", &M);
-	int find[M], unit[M];
+	int find[M];
 	for (int i = 0; i < M; i++)
-	{
-		unit[i] = 0;
 		scanf("%d", &find[i]);
-	}
 	qsort(num, N, sizeof(int), compare);
-	int tmp;
-
 	for (int i = 0; i < M; i++)
-	{
-		tmp = 0;
-		tmp += usearch(num, N, find[i]);
-		tmp += dsearch(num, N, find[i]);
-		printf("%d ", tmp);
-	}
-	/*
-	for (int i = 0; i < M; i++)
-	{
-		printf("%d ", unit[i]);
-	}
-	*/
+		printf("%d ", upper_bound(num, find[i], N) - lower_bound(num, find[i], N));
 }
