@@ -1,7 +1,7 @@
 def swap(N, list, start, dir):
-    if dir == 0:  # 세로
+    if dir == 0:  # 가로
         list[start], list[start+1] = list[start+1], list[start]
-    else:  # 가로
+    else:  # 세로
         list[start], list[start+N] = list[start+N], list[start]
 
 
@@ -9,7 +9,7 @@ def count(N, list):
     max = 0
     for j in range(N):
         cnt = 1
-        for i in range(j*N, j*N+N):
+        for i in range(j*N+1, j*N+N):
             if list[i-1] == list[i]:
                 cnt += 1
             else:
@@ -39,10 +39,7 @@ for i in range(N*N):
     swap(N, tmplist, i, 0)
     tmp = count(N, tmplist)
     max = tmp if max < tmp else max
-    tmplist = list
-    swap(N, tmplist, i, 1)
-    tmp = count(N, tmplist)
-    max = tmp if max < tmp else max
+    
 
 for i in range(N*N-N):
     tmplist = list
