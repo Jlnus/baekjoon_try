@@ -15,6 +15,7 @@ def count(N, list):
             else:
                 max = cnt if max < cnt else max
                 cnt = 1
+        max = cnt if max < cnt else max
     for j in range(N):
         cnt = 1
         for i in range(j+N, N*N, N):
@@ -23,6 +24,7 @@ def count(N, list):
             else:
                 max = cnt if max < cnt else max
                 cnt = 1
+        max = cnt if max < cnt else max
     return max
 
 
@@ -35,14 +37,13 @@ max = 0
 for i in range(N*N):
     if i % N == N-1:
         continue
-    tmplist = list
+    tmplist = list[:]
     swap(N, tmplist, i, 0)
     tmp = count(N, tmplist)
     max = tmp if max < tmp else max
-    
 
 for i in range(N*N-N):
-    tmplist = list
+    tmplist = list[:]
     swap(N, tmplist, i, 1)
     tmp = count(N, tmplist)
     max = tmp if max < tmp else max
