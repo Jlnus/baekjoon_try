@@ -1,7 +1,7 @@
 # baekjoon_try
 vscode 단축키 -----------------------------
 
-여러 줄 수정 : ctrl + alt + 클릭(드래그) 
+여러 줄 수정 : alt + 클릭(드래그) 
 
 변수 여러개 : ctrl + shift + L
 
