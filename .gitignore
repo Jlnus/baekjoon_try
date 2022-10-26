@@ -1,5 +1,6 @@
-
+.DS_store
 .vscode/
 *.exe
 test.c
+test.py
 #  find . -name "*.exe" -delete  
