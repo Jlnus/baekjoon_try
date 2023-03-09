@@ -28,3 +28,8 @@
 
  <p>한 줄에 배낭에 넣을 수 있는 물건들의 가치합의 최댓값을 출력한다.</p>
 
+### refence
+- 냅색(Knapsack) 알고리즘
+https://ryu-e.tistory.com/90
+
+
